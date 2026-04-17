@@ -1,15 +1,12 @@
 import { Typography, Card, CardMedia, CardContent, Stack, Button } from "@mui/material"
+import { ProductImgPathFromTitle } from "../../utils/productUtils";
 import type { Product } from "../types/products"
+import { Link } from "react-router"
 
 type ProductCardProps = {
   product: Product
 }
-
 const ProductCard = ({ product }: ProductCardProps) => {
-  const ProductImgPath = (title: string) => {
-    const basePath = "/product_images/"
-    return basePath + title.toLowerCase().replace(/ /g, "_") + ".png"
-  }
   return (
     <>
       <Card sx={{ flexDirection: "column", height: "100%", display: "flex" }}>
@@ -24,7 +21,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
           component="img"
           height="194"
           width="310"
-          image={ProductImgPath(product.title)}
+          image={ProductImgPathFromTitle(product.title)}
           alt={product.title}
         />
 
@@ -35,7 +32,9 @@ const ProductCard = ({ product }: ProductCardProps) => {
         </CardContent>
 
         <Stack direction="row" spacing={4} sx={{ px: 2, pb: 2, justifyContent: "center" }}>
-          <Button variant="outlined">Details</Button>
+          <Button variant="outlined" component={Link} to={`/products/${product.id}`}>
+            Details
+          </Button>
           <Button variant="outlined">Menu</Button>
         </Stack>
       </Card>

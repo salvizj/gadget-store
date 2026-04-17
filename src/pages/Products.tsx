@@ -1,6 +1,7 @@
 import { Typography, Grid, Container, Stack, Button, Box } from "@mui/material"
-import ProductCard from "../components/ProductCard"
+import ProductCard from "../components/Products/ProductCard"
 import useProducts from "../hooks/useProducts"
+
 const Products = () => {
   const { products, error, loading } = useProducts()
 

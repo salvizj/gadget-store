@@ -1,8 +1,12 @@
 import type { Product } from "../types/products"
 import { useState, useEffect } from "react"
-const useProducts = () => {
+type UseProductsProps = {
+	id?: string
+}
+const useProducts = ({ id }: UseProductsProps = {}) => {
 	const url = import.meta.env.VITE_URL || "http://localhost:3000"
 	const [products, setProducts] = useState<Product[]>([])
+	const [product, setProduct] = useState<Product | null>(null)
 	const [error, setError] = useState<string | null>(null)
 	const [loading, setLoading] = useState<boolean>(true)
 
@@ -10,9 +14,15 @@ const useProducts = () => {
 		const fetchProducts = async () => {
 			try {
 				setLoading(true)
-				const response = await fetch(`${url}/products`)
-				const products = await response.json()
-				setProducts(products)
+				if (id) {
+					const response = await fetch(`${url}/products/${id}`)
+					const product = await response.json()
+					setProduct(product)
+				} else {
+					const response = await fetch(`${url}/products`)
+					const products = await response.json()
+					setProducts(products)
+				}
 			} catch (error) {
 				console.error("Error fetching products:", error)
 				setError("Failed to fetch products")
@@ -22,9 +32,9 @@ const useProducts = () => {
 		}
 
 		fetchProducts()
-	}, [url])
+	}, [url, id])
 
-	return { products, error, loading }
+	return { products, product, error, loading }
 }
 
 export default useProducts
