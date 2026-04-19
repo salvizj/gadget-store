@@ -13,6 +13,10 @@ const theme = createTheme({
     background: {
       default: "#FFFFFF"
     },
+    text: {
+      primary: "#1D1D1D",
+      secondary: "#00000099"
+    }
   },
   typography: {
     h2: {
@@ -29,6 +33,7 @@ const theme = createTheme({
     },
     h6: {
       fontSize: "1.25rem",
+      color: "#3F51B5",
       fontWeight: 500,
       lineHeight: 1.2,
       letterSpacing: "0.15px",
@@ -40,10 +45,23 @@ const theme = createTheme({
       lineHeight: 1,
     },
     body2: {
-      fontSize: "0.875",
+      fontSize: "0.875rem",
       fontWeight: 400,
+      color: "text.secondary",
+      letterSpacing: "0.25px",
       lineHeight: 1.43,
-    }
+    },
+    subtitle1: {
+      fontSize: "1.5rem",
+      fontWeight: 600,
+      lineHeight: 1.75,
+      letterSpacing: "0.25px",
+    },
+    subtitle2: {
+      fontSize: "0.875rem",
+      fontWeight: 500,
+      lineHeight: 1.57,
+    },
   },
   components: {
     MuiButton: {
@@ -55,7 +73,7 @@ const theme = createTheme({
         sizeMedium: {
           fontSize: "1rem",
           padding: "8px 20px",
-        },  
+        },
         sizeLarge: {
           fontSize: "1.25rem",
           padding: "11px 24px",

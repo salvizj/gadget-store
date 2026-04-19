@@ -6,24 +6,24 @@ import { Typography, Stack, Container } from "@mui/material"
 
 const ContactUs = () => {
   const Features = [
-    { icon: <HeadphonesOutlinedIcon sx={{ fontSize: 57 }}/>, title: "Phone number", description: "0123456789" },
-    { icon: <AlternateEmailOutlinedIcon sx={{ fontSize: 57 }}/>, title: "Email", description: "gadget@store.com" }
+    { icon: <HeadphonesOutlinedIcon sx={{ fontSize: 57 }} />, title: "Phone number", description: "0123456789" },
+    { icon: <AlternateEmailOutlinedIcon sx={{ fontSize: 57 }} />, title: "Email", description: "gadget@store.com" }
   ]
   return (
     <>
-      <Container component="section" maxWidth="lg" sx={{ py: 12}}>
-        <Stack direction="row" spacing={14}>
+      <Container component="section" maxWidth="lg" sx={{ py: 12 }}>
+        <Stack direction={{ xs: "column", md: "row" }} spacing={14}>
 
-          <Stack direction="column" spacing={12} sx={{maxWidth: "650px"}}>
+          <Stack direction="column" spacing={12} sx={{ maxWidth: "650px" }}>
             <Typography variant="h2">Contact us by Phone, Email, or Visit us in our Officee</Typography>
-            
+
             <Stack direction="column" spacing={4}>
-              <Typography>Our address: Station Nord 23456, Greenland</Typography>
+              <Typography variant="body1">Our address: Station Nord 23456, Greenland</Typography>
               <IframeMap />
             </Stack>
           </Stack>
 
-          <Stack direction="column" spacing={4} sx={{flex:1, pr: 14}} >
+          <Stack direction={{ xs: "row", md: "column" }} spacing={4} sx={{ flex: 1, pr: { xs: 0, md: 14 } }} >
             {Features.map((feature, index) => (
               <FeatureCard
                 key={index}
@@ -35,7 +35,7 @@ const ContactUs = () => {
           </Stack>
 
         </Stack>
-      </Container>
+      </Container >
     </>
   )
 }
