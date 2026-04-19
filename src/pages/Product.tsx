@@ -1,12 +1,13 @@
 import { Container, Typography, Stack, Button, Card, CardMedia, CardActions, CardContent, Box } from "@mui/material"
 import { useParams } from "react-router";
-import useProducts from "../hooks/useProducts";
 import FeatureList from "../components/Products/FeatureList"
 import { ProductImgPathFromTitle } from "../utils/productUtils";
+import Specs from "../components/Products/Specs"
+import useProduct from "../hooks/products/useProduct";
 
 const Product = () => {
   const { id } = useParams()
-  const { product, error, loading } = useProducts({ id })
+  const { product, error, loading } = useProduct(id)
 
   if (loading) {
     return (
@@ -50,26 +51,16 @@ const Product = () => {
             display: "flex", flex: 1, flexDirection: "column", alignItems: "start", width: "50%"
           }}>
             <Stack direction="column" spacing={4}>
-              <Typography variant="h6" gutterBottom sx={{ fontSize: "2.25rem", lineHeight: 0.67 }}>
+              <Typography variant="h4" gutterBottom>
                 {product.title}
               </Typography>
               <Typography gutterBottom sx={{ color: "secondary.text", fontWeight: 400, fontSize: "1rem", lineHeight: 1.875, letterSpacing: "0.25px" }}>
                 {product.long_description}
               </Typography>
-              <Stack direction={{ xs: "column", md: "row" }} spacing={{ xs: 0, md: 4 }} sx={{ pb: 1 }}>
-                <Typography variant="subtitle1" noWrap={true}>
-                  Year:{product.year}
-                </Typography>
-                <Typography variant="subtitle1" noWrap={true}>
-                  RAM Memory:{product.RAM}
-                </Typography>
-                <Typography variant="subtitle1" noWrap={true}>
-                  Warrenty: {product.warranty_period}
-                </Typography>
-              </Stack>
+              <Specs product={product} />
             </Stack>
             <FeatureList features={product.features} />
-            <Typography variant="subtitle1" gutterBottom>
+            <Typography variant="h5" gutterBottom>
               Price: {product.price}€
             </Typography>
 

@@ -16,7 +16,7 @@ type HeaderProps = {
 }
 
 const Header = ({ navLinks }: HeaderProps) => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   const isMobile = useMediaQuery(theme.breakpoints.down("md"))
 

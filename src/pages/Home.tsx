@@ -31,7 +31,7 @@ const Home = () => {
       <Hero />
       <Container component="section" maxWidth={false} sx={{ py: 8, maxWidth: "1000px" }}>
         <Stack spacing={10} direction="column">
-          <Typography align="center" sx={{ fontSize: "2.25rem", fontWeight: 600, letterSpacing: 0, lineHeight: 1 }}>
+          <Typography align="center" variant="h3">
             Why Choose Us?
           </Typography>
 

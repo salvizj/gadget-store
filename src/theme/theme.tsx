@@ -1,5 +1,7 @@
 import { createTheme } from "@mui/material/styles"
 
+declare module "@mui/material/styles" {
+}
 const theme = createTheme({
   palette: {
     primary: {
@@ -11,7 +13,7 @@ const theme = createTheme({
       contrastText: "#1D1D1D"
     },
     background: {
-      default: "#FFFFFF"
+      default: "#FFFFFF",
     },
     text: {
       primary: "#1D1D1D",
@@ -25,11 +27,25 @@ const theme = createTheme({
       lineHeight: 1,
       letterSpacing: "0px",
     },
+    h3: {
+      fontSize: "2.25rem",
+      fontWeight: 600,
+      letterSpacing: 0,
+      lineHeight: 1
+    },
     h4: {
       fontSize: "2.25rem",
+      color: "#3F51B5",
       fontWeight: 500,
       lineHeight: 0.67,
       letterSpacing: "0.15px",
+    },
+    h5: {
+      fontSize: "1.5rem",
+      color: "#000000DE",
+      fontWeight: 600,
+      lineHeight: 0.83,
+      letterSpacing: "0.25px"
     },
     h6: {
       fontSize: "1.25rem",
@@ -52,10 +68,10 @@ const theme = createTheme({
       lineHeight: 1.43,
     },
     subtitle1: {
-      fontSize: "1.5rem",
-      fontWeight: 600,
-      lineHeight: 1.75,
-      letterSpacing: "0.25px",
+      fontSize: "1rem",
+      fontWeight: 400,
+      lineHeight: 1.5,
+      letterSpacing: "0.15px",
     },
     subtitle2: {
       fontSize: "0.875rem",

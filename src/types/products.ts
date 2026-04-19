@@ -10,3 +10,13 @@ export type Product = {
 	warranty_period: string
 	features: string[]
 }
+
+export type CreateProduct = {
+	title: string
+	price: number
+	short_description: string
+	long_description: string
+	year: number
+	RAM: string
+	warranty_period: string
+}

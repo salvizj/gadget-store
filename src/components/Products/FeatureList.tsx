@@ -2,7 +2,7 @@ import { Stack, Typography } from '@mui/material'
 const FeatureList = ({ features }: { features: string[] }) => {
   return (
     <>
-      <Typography variant="subtitle1">
+      <Typography variant="h5" sx={{ mt: 2 }}>
         Features:
       </Typography>
       <Stack spacing={1} component="ul">

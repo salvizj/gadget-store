@@ -21,7 +21,7 @@ function App() {
             <Route path="products/:id" element={<Product />} />
             <Route path="contact-us" element={<ContactUs />} />
             <Route path="cart" element={<Cart />} />
-            <Route path="*" element={<Typography variant="h1">404: Not Found</Typography>} />
+            <Route path="*" element={<Typography variant="h2">404: Not Found</Typography>} />
           </Route>
         </Routes>
       </ThemeProvider>

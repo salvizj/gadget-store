@@ -1,14 +1,21 @@
-import { Typography, Card, CardMedia, CardContent, Stack, Button, CardActions } from "@mui/material"
+import { Typography, Card, CardMedia, CardContent, Stack, Button, CardActions, ClickAwayListener, Box } from "@mui/material"
 import { ProductImgPathFromTitle } from "../../utils/productUtils";
 import { Link } from "react-router"
 import type { Product } from "../../types/products";
+import { useState } from "react";
+import MenuCard from "./MenuCard";
 
 type ProductCardProps = {
   product: Product
+  onEditClick: () => void
+  onDeleteClick: () => void
 }
-const ProductCard = ({ product }: ProductCardProps) => {
+const ProductCard = ({ product, onEditClick, onDeleteClick }: ProductCardProps) => {
+  const [menuOpen, setMenuOpen] = useState(false)
+
   return (
     <>
+
       <Card sx={{ height: "100%", width: "100%", display: "flex", flexDirection: "column", flex: 1, }}>
         <CardContent sx={{ p: 2 }}>
           <Stack>
@@ -33,15 +40,21 @@ const ProductCard = ({ product }: ProductCardProps) => {
           </Typography>
         </CardContent>
 
-        <CardActions sx={{ display: "flex", justifyContent: "center", gap: 2, mb: 2 }}>
+        <CardActions sx={{ display: "flex", justifyContent: "center", gap: 2, mb: 2 }} >
           <Button variant="outlined" size="small" component={Link} to={`/products/${product.id}`}>
             Details
           </Button>
-          <Button variant="outlined" size="small">
+          <Button variant="outlined" size="small" onClick={() => setMenuOpen(true)} sx={{ position: "relative" }}>
             Menu
           </Button>
+
+          {menuOpen && (
+            <ClickAwayListener onClickAway={() => setMenuOpen(false)}>
+              <MenuCard onEditClick={onEditClick} onDeleteClick={onDeleteClick} closeMenu={() => setMenuOpen(false)} />
+            </ClickAwayListener>
+          )}
         </CardActions>
-      </Card>
+      </Card >
     </>
   )
 }
