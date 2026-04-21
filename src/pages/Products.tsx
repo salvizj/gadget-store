@@ -140,7 +140,11 @@ const Products = () => {
 					</Box>
 					<Grid container spacing={2}>
 						{products.map((product) => (
-							<Grid size={{ xs: 12, sm: 6, md: 3, xl: 3 }} key={product.id}>
+							<Grid
+								size={{ xs: 12, sm: 6, md: 3, xl: 3 }}
+								key={product.id}
+								sx={{ display: "flex" }}
+							>
 								<ProductCard
 									product={product}
 									onDeleteClick={() =>

@@ -97,7 +97,6 @@ const Hero = () => {
 							display: { xs: "none", lg: "flex" },
 							justifyContent: "flex-end",
 							alignItems: "center",
-							width: "100%",
 							flex: 1,
 						}}
 					>
@@ -108,7 +107,6 @@ const Hero = () => {
 							sx={{
 								maxWidth: "600px",
 								maxHeight: "700px",
-								width: "100%",
 							}}
 						/>
 					</Box>

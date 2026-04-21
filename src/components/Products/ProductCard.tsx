@@ -30,8 +30,6 @@ const ProductCard = ({
 		<>
 			<Card
 				sx={{
-					width: "100%",
-					height: "100%",
 					display: "flex",
 					flexDirection: "column",
 					overflow: "visible",
@@ -67,7 +65,7 @@ const ProductCard = ({
 						display: "flex",
 						justifyContent: "center",
 						gap: 2,
-						p: 0,
+						px: 2,
 						m: 0,
 					}}
 				>

@@ -90,7 +90,7 @@ const Cart = () => {
 					)}
 				</Stack>
 
-				<Stack direction="column" sx={{ gap: 6, width: "100%" }}>
+				<Stack direction="column" sx={{ gap: 6 }}>
 					{itemsInCart.map((item) => (
 						<CartCard
 							key={item.product.id}

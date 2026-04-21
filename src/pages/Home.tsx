@@ -45,7 +45,6 @@ const Home = () => {
 						sx={{
 							justifyContent: "center",
 							alignItems: { xs: "center", md: "stretch" },
-							height: "100%",
 						}}
 					>
 						{Features.map((feature, index) => (
