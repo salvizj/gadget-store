@@ -19,16 +19,11 @@ import { useState } from "react"
 import Form from "../components/Products/Form"
 import useUpdateProduct from "../hooks/products/useUpdateProduct"
 import useDeleteProduct from "../hooks/products/useDeleteProduct"
-import { useDispatch, useSelector } from "react-redux"
-import {
-	addToCart,
-	decrementQuantity,
-	incrementQuantity,
-} from "../features/cart/cartSlice"
-import type { RootState } from "../store/store"
 import AddedToCartCard from "../components/Products/AddedToCartCard"
 import QuantityToggler from "../components/Products/QuantityToggler"
 import PageContainer from "../components/PageContainer"
+import useCartProduct from "../hooks/cart/useCartProduct"
+import CenteredMessage from "../components/CenteredMessage"
 
 const Product = () => {
 	const { id } = useParams()
@@ -50,72 +45,32 @@ const Product = () => {
 		error: deleteError,
 	} = useDeleteProduct(refetch)
 
+	const {
+		productAlreadyInCart,
+		productInCartCount,
+		addToCartClick,
+		onIncrementClick,
+		onDecrementClick,
+	} = useCartProduct(Number(id))
+
 	const [menuOpen, setMenuOpen] = useState(false)
 	const [isUpdateFormOpen, setIsUpdateFormOpen] = useState(false)
 	const [isAddedToCartCardOpen, setIsAddedToCartCardOpen] = useState(false)
 
-	const dispatch = useDispatch()
-
-	const productAlreadyInCart = useSelector((state: RootState) =>
-		state.cart.some((item) => item.product.id === product?.id),
-	)
-
-	const productInCartCount = useSelector(
-		(state: RootState) =>
-			state.cart.find((item) => item.product.id === product?.id)?.quantity ?? 0,
-	)
-
 	if (productLoading || updateLoading || deleteLoading) {
-		return (
-			<>
-				<Box
-					sx={{
-						display: "flex",
-						justifyContent: "center",
-						alignItems: "center",
-						height: "100vh",
-					}}
-				>
-					<Typography variant="h2">Loading...</Typography>
-				</Box>
-			</>
-		)
+		return <CenteredMessage message="Loading..." />
 	}
 
 	if (productError || updateError || deleteError) {
 		return (
-			<>
-				<Box
-					sx={{
-						display: "flex",
-						justifyContent: "center",
-						alignItems: "center",
-						height: "100vh",
-					}}
-				>
-					<Typography variant="h2">
-						Error: {productError || updateError || deleteError}
-					</Typography>
-				</Box>
-			</>
+			<CenteredMessage
+				message={`Error: ${productError || updateError || deleteError}`}
+			/>
 		)
 	}
 
 	if (!product) {
-		return (
-			<>
-				<Box
-					sx={{
-						display: "flex",
-						justifyContent: "center",
-						alignItems: "center",
-						height: "100vh",
-					}}
-				>
-					<Typography variant="h2">Product not found</Typography>
-				</Box>
-			</>
-		)
+		return <CenteredMessage message="Product not found" />
 	}
 
 	return (
@@ -208,18 +163,14 @@ const Product = () => {
 									<QuantityToggler
 										productAlreadyInCart={productAlreadyInCart}
 										productInCartCount={productInCartCount}
-										onIncrementClick={() =>
-											dispatch(incrementQuantity({ productId: product.id }))
-										}
-										onDecrementClick={() =>
-											dispatch(decrementQuantity({ productId: product.id }))
-										}
+										onIncrementClick={() => onIncrementClick(Number(id))}
+										onDecrementClick={() => onDecrementClick(Number(id))}
 									/>
 								) : (
 									<Button
 										variant="contained"
 										onClick={() => {
-											dispatch(addToCart(product))
+											addToCartClick(product)
 											setIsAddedToCartCardOpen(true)
 										}}
 									>

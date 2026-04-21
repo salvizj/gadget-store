@@ -1,9 +1,9 @@
-import { Stack, Typography, Card, Button, Box } from "@mui/material"
+import { Stack, Typography } from "@mui/material"
 import { useSelector } from "react-redux"
 import type { RootState } from "../store/store"
 import CartCard from "../components/Cart/CartCard"
-import { Link } from "react-router"
 import PageContainer from "../components/PageContainer"
+import EmptyCartCard from "../components/Cart/EmptyCartCard"
 
 const Cart = () => {
 	const totalSum = useSelector((state: RootState) =>
@@ -25,50 +25,7 @@ const Cart = () => {
 					py: 14,
 				}}
 			>
-				<Box
-					sx={{
-						display: "flex",
-						alignItems: "start",
-					}}
-				>
-					<Typography variant="h4" gutterBottom>
-						Shopping Cart
-					</Typography>
-				</Box>
-				<Card
-					sx={{
-						mx: 22,
-						mt: 20,
-						pb: 16,
-						pt: 10,
-						display: "flex",
-						justifyContent: "center",
-						alignItems: "center",
-					}}
-				>
-					<Stack direction="column" spacing={4} sx={{ alignItems: "center" }}>
-						<Typography variant="h4" gutterBottom>
-							Your shopping cart is empty
-						</Typography>
-						<Typography variant="h4" gutterBottom>
-							Go to
-							<Button component={Link} to="/products">
-								<Typography
-									component="span"
-									variant="h4"
-									gutterBottom
-									sx={{
-										textDecoration: "underline",
-										textTransform: "capitalize",
-										textUnderlineOffset: "2px",
-									}}
-								>
-									Product Page
-								</Typography>
-							</Button>
-						</Typography>
-					</Stack>
-				</Card>
+				<EmptyCartCard />
 			</PageContainer>
 		)
 	}

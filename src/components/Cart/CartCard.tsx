@@ -23,12 +23,10 @@ const CartCard = ({ product, quantity }: CartCardProps) => {
 				sx={{
 					display: "flex",
 					flexDirection: "row",
-					justifyContent: "space-between",
-					alignItems: "center",
 					px: 6,
 				}}
 			>
-				<Stack direction="row" sx={{ alignItems: "center" }} spacing={-1}>
+				<Stack direction="row" sx={{ flex: 1 }} spacing={-1}>
 					<CardMedia
 						component="img"
 						sx={{
@@ -44,6 +42,7 @@ const CartCard = ({ product, quantity }: CartCardProps) => {
 						sx={{
 							display: "flex",
 							flexDirection: "column",
+							flex: 1,
 							gap: 2,
 						}}
 					>
@@ -55,31 +54,34 @@ const CartCard = ({ product, quantity }: CartCardProps) => {
 					</CardContent>
 				</Stack>
 
-				<QuantityToggler
-					productAlreadyInCart={true}
-					productInCartCount={quantity}
-					onIncrementClick={() =>
-						dispatch(incrementQuantity({ productId: product.id }))
-					}
-					onDecrementClick={() =>
-						dispatch(decrementQuantity({ productId: product.id }))
-					}
-				/>
+				<Stack direction="row" spacing={20}>
+					<QuantityToggler
+						productAlreadyInCart={true}
+						productInCartCount={quantity}
+						onIncrementClick={() =>
+							dispatch(incrementQuantity({ productId: product.id }))
+						}
+						onDecrementClick={() =>
+							dispatch(decrementQuantity({ productId: product.id }))
+						}
+					/>
 
-				<CardContent
-					sx={{
-						display: "flex",
-						alignItems: "center",
-					}}
-				>
-					<Typography
-						variant="h5"
-						color="text.secondary"
-						sx={{ whiteSpace: "nowrap" }}
+					<CardContent
+						sx={{
+							display: "flex",
+							alignItems: "center",
+							flex: 1,
+						}}
 					>
-						Total: ${(product.price * quantity).toFixed(2)}
-					</Typography>
-				</CardContent>
+						<Typography
+							variant="h5"
+							color="text.secondary"
+							sx={{ whiteSpace: "nowrap" }}
+						>
+							Total: ${(product.price * quantity).toFixed(2)}
+						</Typography>
+					</CardContent>
+				</Stack>
 			</Card>
 		</>
 	)

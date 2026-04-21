@@ -5,19 +5,20 @@ import AlternateEmailOutlinedIcon from "@mui/icons-material/AlternateEmailOutlin
 import { Typography, Stack, Box } from "@mui/material"
 import PageContainer from "../components/PageContainer"
 
+const FEATURES = [
+	{
+		icon: <HeadphonesOutlinedIcon sx={{ fontSize: 57 }} />,
+		title: "Phone number",
+		description: "0123456789",
+	},
+	{
+		icon: <AlternateEmailOutlinedIcon sx={{ fontSize: 57 }} />,
+		title: "Email",
+		description: "gadget@store.com",
+	},
+]
+
 const ContactUs = () => {
-	const Features = [
-		{
-			icon: <HeadphonesOutlinedIcon sx={{ fontSize: 57 }} />,
-			title: "Phone number",
-			description: "0123456789",
-		},
-		{
-			icon: <AlternateEmailOutlinedIcon sx={{ fontSize: 57 }} />,
-			title: "Email",
-			description: "gadget@store.com",
-		},
-	]
 	return (
 		<>
 			<PageContainer
@@ -54,7 +55,7 @@ const ContactUs = () => {
 							justifyContent: "center",
 						}}
 					>
-						{Features.map((feature, index) => (
+						{FEATURES.map((feature, index) => (
 							<FeatureCard
 								key={index}
 								icon={feature.icon}
