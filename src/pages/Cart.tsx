@@ -32,7 +32,7 @@ const Cart = () => {
 
 	return (
 		<>
-			<PageContainer sx={{ py: 4 }}>
+			<PageContainer sx={{ pt: 4, pb: 36 }}>
 				<Stack
 					direction="row"
 					sx={{ justifyContent: "space-between", alignItems: "center", py: 10 }}

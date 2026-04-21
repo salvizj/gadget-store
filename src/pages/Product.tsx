@@ -91,25 +91,25 @@ const Product = () => {
 				<Card
 					elevation={1}
 					sx={{
-						px: { xs: 2, sm: 4, md: 12 },
+						px: { xs: 2, sm: 4, md: 6, lg: 10 },
 						py: { xs: 3, md: 5 },
 						display: "flex",
-						flexDirection: { xs: "column", xl: "row-reverse" },
-						gap: { xs: 3, xl: 0 },
+						flexDirection: { xs: "column", md: "row-reverse" },
+						gap: { xs: 3, md: 0 },
 					}}
 				>
 					<CardMedia
 						component="img"
 						sx={{
-							width: { xs: "100%", xl: "auto" },
-							maxWidth: { xs: "100%", xl: "550px" },
+							maxWidth: { xs: "100%", md: "550px" },
+							width: "40%",
 							maxHeight: "550px",
 							objectFit: "contain",
-							selfAlign: "center",
+							alignSelf: "top",
 						}}
 						image={ProductImgPathFromTitle(product.title)}
 						alt={product.title}
-					></CardMedia>
+					/>
 
 					<CardContent
 						sx={{
@@ -133,7 +133,7 @@ const Product = () => {
 									fontSize: "1rem",
 									lineHeight: 1.875,
 									letterSpacing: "0.25px",
-									maxWidth: { xs: "100%", md: "70%" },
+									maxWidth: { xs: "100%", md: "80%" },
 								}}
 							>
 								{product.long_description}

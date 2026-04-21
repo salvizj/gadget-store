@@ -4,7 +4,7 @@ import type { Product } from "../../types/types"
 const Specs = ({ product }: { product: Product }) => {
 	return (
 		<Stack
-			direction={{ xs: "column", xl: "row" }}
+			direction={{ xs: "column", md: "row" }}
 			spacing={{ xs: 2, md: 4 }}
 			sx={{ pb: { xs: 2, md: 4 } }}
 		>

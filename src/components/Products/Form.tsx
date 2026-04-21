@@ -72,7 +72,11 @@ const Form = ({
 			>
 				<Card
 					component="form"
-					sx={{ py: 6, px: 10, width: { xs: "auto", md: "50%" } }}
+					sx={{
+						py: 2,
+						px: 10,
+						width: { xs: "auto", md: "50%" },
+					}}
 					onSubmit={onSubmit}
 				>
 					<CardContent>
