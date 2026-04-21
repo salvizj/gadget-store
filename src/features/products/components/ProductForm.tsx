@@ -9,7 +9,7 @@ import {
 } from "@mui/material"
 import type React from "react"
 import { useState } from "react"
-import type { CreateProduct, Product } from "../../types/types"
+import type { CreateProduct, Product } from "../../../types/types"
 
 type FormProps = {
 	product?: Product
@@ -40,7 +40,7 @@ const Form = ({
 		...(isUpdate && { features: product?.features ?? [] }),
 	})
 
-	const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+	const onSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
 		e.preventDefault()
 
 		if (isUpdate && onUpdate) {

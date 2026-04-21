@@ -1,12 +1,12 @@
 import { CardContent, Typography, Card, Box, Stack } from "@mui/material"
 
-type FeatureCardProps = {
+type InfoCardProps = {
 	icon: React.ReactNode
 	title: string
 	description: string
 }
 
-const FeatureCard = ({ icon, title, description }: FeatureCardProps) => {
+const InfoCard = ({ icon, title, description }: InfoCardProps) => {
 	return (
 		<Card
 			sx={{
@@ -58,4 +58,4 @@ const FeatureCard = ({ icon, title, description }: FeatureCardProps) => {
 		</Card>
 	)
 }
-export default FeatureCard
+export default InfoCard

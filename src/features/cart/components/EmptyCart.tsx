@@ -1,7 +1,7 @@
 import { Stack, Typography, Card, Button, Box } from "@mui/material"
 import { Link } from "react-router"
 
-const EmptyCartCard = () => {
+const EmptyCart = () => {
 	return (
 		<>
 			<Box
@@ -51,4 +51,4 @@ const EmptyCartCard = () => {
 		</>
 	)
 }
-export default EmptyCartCard
+export default EmptyCart

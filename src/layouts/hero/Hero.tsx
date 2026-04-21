@@ -1,5 +1,5 @@
 import { Box, Button, Typography, Stack } from "@mui/material"
-import HeroImage from "../assets/images/hero_image.png"
+import HeroImage from "../../assets/images/hero_image.png"
 import { Link } from "react-router"
 
 const Hero = () => {

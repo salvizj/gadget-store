@@ -1,20 +1,17 @@
 import { Card, CardContent, CardMedia, Stack, Typography } from "@mui/material"
-import { ProductImgPathFromTitle } from "../../utils/productUtils"
-import type { Product } from "../../types/types"
-import QuantityToggler from "../Products/QuantityToggler"
+import { ProductImgPathFromTitle } from "../../../utils/productUtils"
+import type { CartItem, Product } from "../../../types/types"
+import QuantityToggler from "../../../shared/components/QuantityControl"
 import { useDispatch } from "react-redux"
-import {
-	decrementQuantity,
-	incrementQuantity,
-} from "../../features/cart/cartSlice"
+import { decrementQuantity, incrementQuantity } from "../cartSlice"
 import Specs from "./Specs"
 
-type CartCardProps = {
+type CartItemProps = {
 	product: Product
 	quantity: number
 }
 
-const CartCard = ({ product, quantity }: CartCardProps) => {
+const CartItem = ({ product, quantity }: CartItemProps) => {
 	const dispatch = useDispatch()
 
 	return (
@@ -87,4 +84,4 @@ const CartCard = ({ product, quantity }: CartCardProps) => {
 	)
 }
 
-export default CartCard
+export default CartItem

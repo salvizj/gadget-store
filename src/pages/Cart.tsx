@@ -1,9 +1,9 @@
 import { Stack, Typography } from "@mui/material"
 import { useSelector } from "react-redux"
 import type { RootState } from "../store/store"
-import CartCard from "../components/Cart/CartCard"
-import PageContainer from "../components/PageContainer"
-import EmptyCartCard from "../components/Cart/EmptyCartCard"
+import PageContainer from "../layouts/PageContainer"
+import EmptyCartCard from "../features/cart/components/EmptyCart"
+import CartItem from "../features/cart/components/CartItem"
 
 const Cart = () => {
 	const totalSum = useSelector((state: RootState) =>
@@ -49,7 +49,7 @@ const Cart = () => {
 
 				<Stack direction="column" sx={{ gap: 6 }}>
 					{itemsInCart.map((item) => (
-						<CartCard
+						<CartItem
 							key={item.product.id}
 							product={item.product}
 							quantity={item.quantity}

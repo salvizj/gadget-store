@@ -3,19 +3,19 @@ import AddIcon from "@mui/icons-material/Add"
 import RemoveIcon from "@mui/icons-material/Remove"
 import TrashIcon from "@mui/icons-material/Delete"
 
-type QuantityTogglerProps = {
+type QuantityControl = {
 	productAlreadyInCart: boolean
 	productInCartCount: number
 	onIncrementClick: () => void
 	onDecrementClick: () => void
 }
 
-const QuantityToggler = ({
+const QuanitityControl = ({
 	productAlreadyInCart,
 	productInCartCount,
 	onIncrementClick,
 	onDecrementClick,
-}: QuantityTogglerProps) => {
+}: QuantityControl) => {
 	const buttonStyles = {
 		cursor: "pointer",
 		width: "45px",
@@ -56,4 +56,4 @@ const QuantityToggler = ({
 	)
 }
 
-export default QuantityToggler
+export default QuanitityControl

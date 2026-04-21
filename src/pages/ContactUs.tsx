@@ -1,22 +1,8 @@
-import FeatureCard from "../components/FeatureCard"
-import IframeMap from "../components/IframeMap"
-import HeadphonesOutlinedIcon from "@mui/icons-material/HeadphonesOutlined"
-import AlternateEmailOutlinedIcon from "@mui/icons-material/AlternateEmailOutlined"
 import { Typography, Stack, Box } from "@mui/material"
-import PageContainer from "../components/PageContainer"
-
-const FEATURES = [
-	{
-		icon: <HeadphonesOutlinedIcon sx={{ fontSize: 57 }} />,
-		title: "Phone number",
-		description: "0123456789",
-	},
-	{
-		icon: <AlternateEmailOutlinedIcon sx={{ fontSize: 57 }} />,
-		title: "Email",
-		description: "gadget@store.com",
-	},
-]
+import PageContainer from "../layouts/PageContainer"
+import StoreMap from "../shared/components/StoreMap"
+import { CONTACT_INFO, EMBEDDED_MAP_URL } from "../constants/contactInfo"
+import InfoCard from "../shared/components/InforCard"
 
 const ContactUs = () => {
 	return (
@@ -33,7 +19,7 @@ const ContactUs = () => {
 					<Box sx={{ maxWidth: "750px" }}>
 						<Stack direction="column" spacing={12}>
 							<Typography variant="h2">
-								Contact us by Phone, Email, or Vaisit us in our Officee
+								Contact us by Phone, Email, or Visit us in our Office
 							</Typography>
 
 							<Stack direction="column" spacing={4}>
@@ -41,7 +27,7 @@ const ContactUs = () => {
 									Our address: Station Nord 23456, Greenland
 								</Typography>
 								<Box sx={{ height: "320px" }}>
-									<IframeMap />
+									<StoreMap mapEmbedUrl={EMBEDDED_MAP_URL} />
 								</Box>
 							</Stack>
 						</Stack>
@@ -55,12 +41,12 @@ const ContactUs = () => {
 							justifyContent: "center",
 						}}
 					>
-						{FEATURES.map((feature, index) => (
-							<FeatureCard
+						{CONTACT_INFO.map((info, index) => (
+							<InfoCard
 								key={index}
-								icon={feature.icon}
-								title={feature.title}
-								description={feature.description}
+								icon={info.icon}
+								title={info.title}
+								description={info.description}
 							/>
 						))}
 					</Stack>

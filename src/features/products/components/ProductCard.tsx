@@ -8,11 +8,11 @@ import {
 	ClickAwayListener,
 	Box,
 } from "@mui/material"
-import { ProductImgPathFromTitle } from "../../utils/productUtils"
+import { ProductImgPathFromTitle } from "../../../utils/productUtils"
 import { Link } from "react-router"
 import { useState } from "react"
-import MenuCard from "./MenuCard"
-import type { Product } from "../../types/types"
+import type { Product } from "../../../types/types"
+import ProductContextMenu from "./ProductContextMenu/ProductContextMenu"
 
 type ProductCardProps = {
 	product: Product
@@ -99,7 +99,7 @@ const ProductCard = ({
 										top: -10,
 									}}
 								>
-									<MenuCard
+									<ProductContextMenu
 										product={product}
 										onEditClick={() => onEditClick(product)}
 										onDeleteClick={onDeleteClick}

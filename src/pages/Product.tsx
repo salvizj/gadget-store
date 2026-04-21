@@ -10,20 +10,20 @@ import {
 	ClickAwayListener,
 } from "@mui/material"
 import { useParams } from "react-router"
-import FeatureList from "../components/Products/FeatureList"
+import FeatureList from "../features/products/components/ProductFeatureList"
 import { ProductImgPathFromTitle } from "../utils/productUtils"
-import Specs from "../components/Products/Specs"
-import useProduct from "../hooks/products/useProduct"
-import MenuCard from "../components/Products/MenuCard"
+import useProduct from "../features/products/hooks/useProduct"
 import { useState } from "react"
-import Form from "../components/Products/Form"
-import useUpdateProduct from "../hooks/products/useUpdateProduct"
-import useDeleteProduct from "../hooks/products/useDeleteProduct"
-import AddedToCartCard from "../components/Products/AddedToCartCard"
-import QuantityToggler from "../components/Products/QuantityToggler"
-import PageContainer from "../components/PageContainer"
+import Form from "../features/products/components/ProductForm"
+import useUpdateProduct from "../features/products/hooks/useUpdateProduct"
+import useDeleteProduct from "../features/products/hooks/useDeleteProduct"
+import AddedToCartCard from "../features/products/components/AddedToCartDialog"
+import PageContainer from "../layouts/PageContainer"
 import useCartProduct from "../hooks/cart/useCartProduct"
-import CenteredMessage from "../components/CenteredMessage"
+import CenteredMessage from "../shared/components/CenteredMessage"
+import ProductSpecs from "../features/products/components/ProductSpecs"
+import QuantityControl from "../shared/components/QuantityControl"
+import ProductContextMenu from "../features/products/components/ProductContextMenu/ProductContextMenu"
 
 const Product = () => {
 	const { id } = useParams()
@@ -138,7 +138,7 @@ const Product = () => {
 							>
 								{product.long_description}
 							</Typography>
-							<Specs product={product} />
+							<ProductSpecs product={product} />
 						</Stack>
 						<FeatureList features={product.features ?? []} />
 						<Typography variant="h5" gutterBottom sx={{ py: 4 }}>
@@ -160,7 +160,7 @@ const Product = () => {
 								</Button>
 
 								{productAlreadyInCart ? (
-									<QuantityToggler
+									<QuantityControl
 										productAlreadyInCart={productAlreadyInCart}
 										productInCartCount={productInCartCount}
 										onIncrementClick={() => onIncrementClick(Number(id))}
@@ -191,7 +191,7 @@ const Product = () => {
 											top: 0,
 										}}
 									>
-										<MenuCard
+										<ProductContextMenu
 											product={product}
 											onEditClick={() => setIsUpdateFormOpen(true)}
 											onDeleteClick={() => deleteProduct(id as string)}

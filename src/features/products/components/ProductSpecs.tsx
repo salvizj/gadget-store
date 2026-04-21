@@ -1,7 +1,7 @@
 import { Typography, Stack } from "@mui/material"
-import type { Product } from "../../types/types"
+import type { Product } from "../../../types/types"
 
-const Specs = ({ product }: { product: Product }) => {
+const ProductSpecs = ({ product }: { product: Product }) => {
 	return (
 		<Stack
 			direction={{ xs: "column", md: "row" }}
@@ -20,4 +20,4 @@ const Specs = ({ product }: { product: Product }) => {
 		</Stack>
 	)
 }
-export default Specs
+export default ProductSpecs

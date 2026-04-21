@@ -1,30 +1,7 @@
 import { Container, Typography, Stack } from "@mui/material"
-import FeatureCard from "../components/FeatureCard"
-import Hero from "../components/Hero"
-import LightbulbOutlinedIcon from "@mui/icons-material/LightbulbOutlined"
-import WifiIcon from "@mui/icons-material/Wifi"
-import DevicesOtherOutlinedIcon from "@mui/icons-material/DevicesOtherOutlined"
-
-const FEATURES = [
-	{
-		icon: <WifiIcon sx={{ fontSize: 57 }} />,
-		title: "Wireless Freedom",
-		description:
-			"wireless gadgets that provide freedom of movement while using them",
-	},
-	{
-		icon: <DevicesOtherOutlinedIcon sx={{ fontSize: 57 }} />,
-		title: "Stay Connected",
-		description:
-			" gadgets that help people stay connected with their loved ones and colleagues",
-	},
-	{
-		icon: <LightbulbOutlinedIcon sx={{ fontSize: 57 }} />,
-		title: "Smart Home",
-		description:
-			"gadgets that make your home smarter and more efficient at the space of your own home",
-	},
-]
+import FeatureCard from "../shared/components/InforCard"
+import Hero from "../layouts/hero/Hero"
+import { HOME_INFO } from "../constants/homeInfo"
 
 const Home = () => {
 	return (
@@ -48,12 +25,12 @@ const Home = () => {
 							alignItems: { xs: "center", md: "stretch" },
 						}}
 					>
-						{FEATURES.map((feature, index) => (
+						{HOME_INFO.map((info, index) => (
 							<FeatureCard
 								key={index}
-								icon={feature.icon}
-								title={feature.title}
-								description={feature.description}
+								icon={info.icon}
+								title={info.title}
+								description={info.description}
 							/>
 						))}
 					</Stack>

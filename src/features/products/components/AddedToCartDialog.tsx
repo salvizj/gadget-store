@@ -5,11 +5,12 @@ import {
 	CardActions,
 	Typography,
 } from "@mui/material"
-type AddedToCardProps = {
+
+type AddedToCartDialogProps = {
 	closeWindow: () => void
 }
 
-const AddedToCartCard = ({ closeWindow }: AddedToCardProps) => {
+const AddedToCartDialog = ({ closeWindow }: AddedToCartDialogProps) => {
 	return (
 		<Card
 			sx={{
@@ -48,4 +49,4 @@ const AddedToCartCard = ({ closeWindow }: AddedToCardProps) => {
 	)
 }
 
-export default AddedToCartCard
+export default AddedToCartDialog

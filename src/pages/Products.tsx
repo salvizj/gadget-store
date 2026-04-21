@@ -1,14 +1,14 @@
 import { Typography, Grid, Stack, Button, Box } from "@mui/material"
-import ProductCard from "../components/Products/ProductCard"
-import useProducts from "../hooks/products/useProducts"
+import ProductCard from "../features/products/components/ProductCard"
+import useProducts from "../features/products/hooks/useProducts"
 import { useState } from "react"
-import Form from "../components/Products/Form"
-import useCreateProduct from "../hooks/products/useCreateProduct"
-import useUpdateProduct from "../hooks/products/useUpdateProduct"
-import useDeleteProduct from "../hooks/products/useDeleteProduct"
+import Form from "../features/products/components/ProductForm"
+import useCreateProduct from "../features/products/hooks/useCreateProduct"
+import useUpdateProduct from "../features/products/hooks/useUpdateProduct"
+import useDeleteProduct from "../features/products/hooks/useDeleteProduct"
 import type { Product } from "../types/types"
 import AddIcon from "@mui/icons-material/Add"
-import PageContainer from "../components/PageContainer"
+import PageContainer from "../layouts/PageContainer"
 
 const Products = () => {
 	const [isCreateFormOpen, setIsCreateFormOpen] = useState(false)

@@ -9,17 +9,12 @@ import MenuIcon from "@mui/icons-material/Menu"
 import CloseIcon from "@mui/icons-material/Close"
 import ComputerRoundedIcon from "@mui/icons-material/ComputerRounded"
 import { useState } from "react"
-import theme from "../theme/theme"
-import NavLinks from "./NavLinks"
-import type { NavLink } from "../types/types"
 import { useSelector } from "react-redux"
-import type { RootState } from "../store/store"
+import NavMenu from "./NavMenu"
+import theme from "../../theme/theme"
+import type { RootState } from "../../store/store"
 
-type HeaderProps = {
-	navLinks: NavLink[]
-}
-
-const Header = ({ navLinks }: HeaderProps) => {
+const Header = () => {
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 	const isMobile = useMediaQuery(theme.breakpoints.down("md"))
 	const cartItemCount = useSelector((state: RootState) =>
@@ -61,8 +56,7 @@ const Header = ({ navLinks }: HeaderProps) => {
 				)}
 
 				{!isMobile && (
-					<NavLinks
-						navLinks={navLinks}
+					<NavMenu
 						stackDirection="row"
 						alignItems="center"
 						cartItemCount={cartItemCount}
@@ -71,8 +65,7 @@ const Header = ({ navLinks }: HeaderProps) => {
 			</Toolbar>
 
 			{isMobile && mobileMenuOpen && (
-				<NavLinks
-					navLinks={navLinks}
+				<NavMenu
 					stackDirection="column"
 					alignItems="start"
 					cartItemCount={cartItemCount}
