@@ -8,22 +8,26 @@ export type Product = {
 	price: number
 	short_description: string
 	long_description: string
+	image: string
 	year: number
 	RAM: string
-	img: string | null
 	warranty_period: string
 	features: string[]
 }
 
-export type CreateProduct = {
+export type ProductFormData = {
+	id?: number
 	title: string
-	price: number
+	price: string | number
 	short_description: string
 	long_description: string
-	year: number
+	image: string
+	year: string | number
 	RAM: string
 	warranty_period: string
+	features: string[]
 }
+
 export type NavLink = {
 	title: string
 	path: string

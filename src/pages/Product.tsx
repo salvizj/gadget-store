@@ -23,7 +23,7 @@ import useCartProduct from "../hooks/cart/useCartProduct"
 import CenteredMessage from "../shared/components/CenteredMessage"
 import ProductSpecs from "../features/products/components/ProductSpecs"
 import QuantityControl from "../shared/components/QuantityControl"
-import ProductContextMenu from "../features/products/components/ProductContextMenu/ProductContextMenu"
+import ProductContextMenu from "../features/products/components/ProductContextMenu"
 
 const Product = () => {
 	const { id } = useParams()

@@ -6,17 +6,19 @@ import {
 	CardContent,
 	Stack,
 	TextField,
+	Typography,
 } from "@mui/material"
 import type React from "react"
 import { useState } from "react"
-import type { CreateProduct, Product } from "../../../types/types"
+import type { Product, ProductFormData } from "../../../types/types"
+import { formFields } from "../../../constants/formFields"
 
 type FormProps = {
 	product?: Product
 	closeForm: () => void
 	actionBtnText: string
-	onCreate?: (product: CreateProduct) => void
-	onUpdate?: (product: Product) => void
+	onCreate?: (product: ProductFormData) => void
+	onUpdate?: (product: ProductFormData) => void
 }
 
 const Form = ({
@@ -28,25 +30,75 @@ const Form = ({
 }: FormProps) => {
 	const isUpdate = !!product
 
-	const [formData, setFormData] = useState<Product | CreateProduct>({
+	const [formData, setFormData] = useState<ProductFormData>({
 		...(isUpdate && { id: product?.id }),
 		title: product?.title ?? "",
-		price: product?.price ?? 0,
+		price: String(product?.price ?? ""),
 		short_description: product?.short_description ?? "",
 		long_description: product?.long_description ?? "",
-		year: product?.year ?? 0,
+		year: String(product?.year ?? ""),
 		RAM: product?.RAM ?? "",
 		warranty_period: product?.warranty_period ?? "",
-		...(isUpdate && { features: product?.features ?? [] }),
+		features: product?.features ?? [],
+		image: product?.image ?? "",
 	})
+
+	const [validationErrors, setValidationErrors] = useState<{
+		[key: string]: string
+	}>({})
+
+	const validateForm = () => {
+		const errors: { [key: string]: string } = {}
+
+		if (!formData.title) {
+			errors.title = "Title is required"
+		}
+		if (Number(formData.price) <= 0) {
+			errors.price = "Price must be greater than 0"
+		}
+		if (!formData.short_description) {
+			errors.short_description = "Short description is required"
+		}
+		if (!formData.long_description) {
+			errors.long_description = "Long description is required"
+		}
+		if (!formData.image) {
+			errors.image = "Image URL is required"
+		}
+		if (Number(formData.year) <= 0) {
+			errors.year = "Year must be greater than 0"
+		}
+		if (!formData.RAM) {
+			errors.RAM = "RAM memory is required"
+		}
+		if (!formData.warranty_period) {
+			errors.warranty_period = "Warranty period is required"
+		}
+		if (formData.features.length === 0) {
+			errors.features = "At least one feature is required"
+		}
+
+		setValidationErrors(errors)
+		return Object.keys(errors).length === 0
+	}
 
 	const onSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
 		e.preventDefault()
 
+		if (!validateForm()) {
+			return
+		}
+
+		const normalizedData = {
+			...formData,
+			price: Number(formData.price),
+			year: Number(formData.year),
+		}
+
 		if (isUpdate && onUpdate) {
-			onUpdate(formData as Product)
+			onUpdate(normalizedData as ProductFormData)
 		} else if (onCreate) {
-			onCreate(formData as CreateProduct)
+			onCreate(normalizedData as ProductFormData)
 		}
 
 		closeForm()
@@ -54,104 +106,96 @@ const Form = ({
 
 	const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target
-		setFormData((prev) => ({ ...prev, [name]: value }))
+
+		const parsedValue =
+			name === "price" || name === "year" ? Number(value) : value
+
+		setFormData((prev) => ({ ...prev, [name]: parsedValue }))
+
+		setValidationErrors({})
+	}
+
+	const onFeatureChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		const features = e.target.value
+			.split(",")
+			.map((f) => f.trim())
+			.filter(Boolean)
+
+		setFormData((prev) => ({ ...prev, features }))
+
+		setValidationErrors({})
 	}
 
 	return (
-		<>
-			<Box
+		<Box
+			sx={{
+				position: "fixed",
+				inset: 0,
+				bgcolor: "rgba(0,0,0,0.6)",
+				display: "flex",
+				alignItems: "center",
+				justifyContent: "center",
+				zIndex: 1000,
+			}}
+		>
+			<Card
+				component="form"
 				sx={{
-					position: "fixed",
-					inset: 0,
-					bgcolor: "rgba(0,0,0,0.6)",
-					display: "flex",
-					alignItems: "center",
-					justifyContent: "center",
-					zIndex: 1000,
+					py: 2,
+					px: 10,
+					width: { xs: "auto", md: "50%" },
 				}}
+				onSubmit={onSubmit}
 			>
-				<Card
-					component="form"
-					sx={{
-						py: 2,
-						px: 10,
-						width: { xs: "auto", md: "50%" },
-					}}
-					onSubmit={onSubmit}
-				>
-					<CardContent>
-						<Stack
-							direction="column"
-							spacing={2}
-							sx={{
-								"& .MuiTextField-root": {
-									bgcolor: "#21212114",
-								},
-								"& .MuiOutlinedInput-notchedOutline": {
-									border: "none",
-								},
-							}}
-						>
-							<TextField
-								name="title"
-								label="Title"
-								value={formData.title}
-								onChange={onChange}
-							/>
-							<TextField
-								name="short_description"
-								label="Short description"
-								value={formData.short_description}
-								onChange={onChange}
-							/>
-							<TextField
-								name="long_description"
-								label="Long description"
-								value={formData.long_description}
-								onChange={onChange}
-							/>
-							<TextField
-								name="price"
-								type="number"
-								label="Price"
-								value={formData.price > 0 ? formData.price : ""}
-								onChange={onChange}
-							/>
-							<TextField
-								name="year"
-								type="number"
-								label="Year"
-								value={formData.year > 0 ? formData.year : ""}
-								onChange={onChange}
-							/>
-							<TextField
-								name="RAM"
-								label="RAM memory"
-								value={formData.RAM}
-								onChange={onChange}
-							/>
-							<TextField
-								name="warranty_period"
-								label="Warrenty period"
-								value={formData.warranty_period}
-								onChange={onChange}
-							/>
-						</Stack>
-					</CardContent>
-
-					<CardActions
-						sx={{ display: "flex", justifyContent: "center", gap: 2 }}
+				<CardContent>
+					<Stack
+						direction="column"
+						spacing={2}
+						sx={{
+							"& .MuiTextField-root": {
+								bgcolor: "#21212114",
+							},
+							"& .MuiOutlinedInput-notchedOutline": {
+								border: "none",
+							},
+						}}
 					>
-						<Button variant="outlined" onClick={closeForm}>
-							Cancel
-						</Button>
-						<Button variant="contained" type="submit">
-							{actionBtnText}
-						</Button>
-					</CardActions>
-				</Card>
-			</Box>
-		</>
+						{formFields.map((field) => (
+							<Stack key={field.name}>
+								<TextField
+									name={field.name}
+									label={field.label}
+									type={field.type}
+									value={
+										field.name === "features"
+											? (formData.features as string[]).join(", ")
+											: formData[field.name as keyof typeof formData]
+									}
+									onChange={
+										field.name === "features" ? onFeatureChange : onChange
+									}
+									error={!!validationErrors[field.name]}
+								/>
+								{validationErrors[field.name] && (
+									<Typography color="error" variant="body2">
+										{validationErrors[field.name]}
+									</Typography>
+								)}
+							</Stack>
+						))}
+					</Stack>
+				</CardContent>
+
+				<CardActions sx={{ display: "flex", justifyContent: "center", gap: 2 }}>
+					<Button variant="outlined" onClick={closeForm}>
+						Cancel
+					</Button>
+					<Button variant="contained" type="submit">
+						{actionBtnText}
+					</Button>
+				</CardActions>
+			</Card>
+		</Box>
 	)
 }
 

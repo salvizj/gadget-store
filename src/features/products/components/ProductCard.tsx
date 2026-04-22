@@ -12,7 +12,7 @@ import { ProductImgPathFromTitle } from "../../../utils/productUtils"
 import { Link } from "react-router"
 import { useState } from "react"
 import type { Product } from "../../../types/types"
-import ProductContextMenu from "./ProductContextMenu/ProductContextMenu"
+import ProductContextMenu from "./ProductContextMenu"
 
 type ProductCardProps = {
 	product: Product

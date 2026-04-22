@@ -94,29 +94,6 @@ const theme = createTheme({
 			lineHeight: 1.57,
 		},
 	},
-
-	components: {
-		MuiButton: {
-			styleOverrides: {
-				sizeSmall: {
-					fontSize: "0.698rem",
-					padding: "6px 12px",
-				},
-				sizeMedium: {
-					fontSize: "1.1821rem",
-					padding: "8px 20px",
-					borderRadius: "5.53px",
-				},
-				sizeLarge: {
-					fontSize: "1.454rem",
-					padding: "11px 24px",
-				},
-				outlined: {
-					borderColor: "#00000033",
-				},
-			},
-		},
-	},
 })
 
 export default theme
