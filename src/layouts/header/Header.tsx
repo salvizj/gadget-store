@@ -1,10 +1,4 @@
-import {
-	AppBar,
-	Stack,
-	Toolbar,
-	Typography,
-	useMediaQuery,
-} from "@mui/material"
+import { AppBar, Stack, Toolbar, Typography, useMediaQuery } from "@mui/material"
 import MenuIcon from "@mui/icons-material/Menu"
 import CloseIcon from "@mui/icons-material/Close"
 import ComputerRoundedIcon from "@mui/icons-material/ComputerRounded"
@@ -15,64 +9,44 @@ import theme from "../../theme/theme"
 import type { RootState } from "../../store/store"
 
 const Header = () => {
-	const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-	const isMobile = useMediaQuery(theme.breakpoints.down("md"))
-	const cartItemCount = useSelector((state: RootState) =>
-		state.cart.reduce((sum, item) => sum + item.quantity, 0),
-	)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"))
+  const cartItemCount = useSelector((state: RootState) => state.cart.reduce((sum, item) => sum + item.quantity, 0))
 
-	return (
-		<AppBar position="static" component="header" elevation={0} sx={{ py: 1 }}>
-			<Toolbar sx={{ justifyContent: "space-between", alignItems: "center" }}>
-				<Stack direction="row" sx={{ alignItems: "center", gap: 3, mx: 5 }}>
-					<ComputerRoundedIcon sx={{ fontSize: "2.25rem" }} />
-					<Typography
-						color="inherit"
-						sx={{
-							fontWeight: 600,
-							fontSize: "2.25rem",
-							lineHeight: 1,
-							letterSpacing: 0,
-						}}
-					>
-						Gadget Store
-					</Typography>
-				</Stack>
+  return (
+    <AppBar position="static" component="header" elevation={0} sx={{ py: 1 }}>
+      <Toolbar sx={{ justifyContent: "space-between", alignItems: "center" }}>
+        <Stack direction="row" sx={{ alignItems: "center", gap: 3, mx: 5 }}>
+          <ComputerRoundedIcon sx={{ fontSize: "2.25rem" }} />
+          <Typography
+            color="inherit"
+            sx={{
+              fontWeight: 600,
+              fontSize: "2.25rem",
+              lineHeight: 1,
+              letterSpacing: 0,
+            }}
+          >
+            Gadget Store
+          </Typography>
+        </Stack>
 
-				{isMobile && mobileMenuOpen && (
-					<MenuIcon
-						sx={{ cursor: "pointer" }}
-						onClick={() => setMobileMenuOpen((prev) => !prev)}
-						fontSize="large"
-					/>
-				)}
+        {isMobile && mobileMenuOpen && (
+          <MenuIcon sx={{ cursor: "pointer" }} onClick={() => setMobileMenuOpen((prev) => !prev)} fontSize="large" />
+        )}
 
-				{isMobile && !mobileMenuOpen && (
-					<CloseIcon
-						sx={{ cursor: "pointer" }}
-						onClick={() => setMobileMenuOpen((prev) => !prev)}
-						fontSize="large"
-					/>
-				)}
+        {isMobile && !mobileMenuOpen && (
+          <CloseIcon sx={{ cursor: "pointer" }} onClick={() => setMobileMenuOpen((prev) => !prev)} fontSize="large" />
+        )}
 
-				{!isMobile && (
-					<NavMenu
-						stackDirection="row"
-						alignItems="center"
-						cartItemCount={cartItemCount}
-					/>
-				)}
-			</Toolbar>
+        {!isMobile && <NavMenu stackDirection="row" alignItems="center" cartItemCount={cartItemCount} />}
+      </Toolbar>
 
-			{isMobile && mobileMenuOpen && (
-				<NavMenu
-					stackDirection="column"
-					alignItems="start"
-					cartItemCount={cartItemCount}
-				/>
-			)}
-		</AppBar>
-	)
+      {isMobile && mobileMenuOpen && (
+        <NavMenu stackDirection="column" alignItems="start" cartItemCount={cartItemCount} />
+      )}
+    </AppBar>
+  )
 }
 
 export default Header

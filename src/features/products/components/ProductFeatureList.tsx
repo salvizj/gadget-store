@@ -1,18 +1,18 @@
 import { Stack, Typography } from "@mui/material"
 
 const ProductFeatureList = ({ features }: { features: string[] }) => {
-	return (
-		<>
-			<Typography variant="h5">Features:</Typography>
-			<Stack spacing={1} component="ul">
-				{features.map((feature) => (
-					<Typography key={feature} component="li" variant="body2">
-						{feature}
-					</Typography>
-				))}
-			</Stack>
-		</>
-	)
+  return (
+    <>
+      <Typography variant="h5">Features:</Typography>
+      <Stack spacing={1} component="ul">
+        {features.map((feature) => (
+          <Typography key={feature} component="li" variant="body2">
+            {feature}
+          </Typography>
+        ))}
+      </Stack>
+    </>
+  )
 }
 
 export default ProductFeatureList
