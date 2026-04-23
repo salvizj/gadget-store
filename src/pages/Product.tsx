@@ -9,12 +9,12 @@ import useUpdateProduct from "../features/products/hooks/useUpdateProduct"
 import useDeleteProduct from "../features/products/hooks/useDeleteProduct"
 import AddedToCartCard from "../features/products/components/AddedToCartDialog"
 import PageContainer from "../layouts/PageContainer"
-import useCartProduct from "../hooks/cart/useCartProduct"
 import CenteredMessage from "../shared/components/CenteredMessage"
 import ProductSpecs from "../features/products/components/ProductSpecs"
 import QuantityControl from "../shared/components/QuantityControl"
 import ProductContextMenu from "../features/products/components/ProductContextMenu"
 import Button from "../shared/components/Buttons/Button"
+import useCartProduct from "../features/cart/hooks/useCartProduct"
 
 const Product = () => {
   const { id } = useParams()
