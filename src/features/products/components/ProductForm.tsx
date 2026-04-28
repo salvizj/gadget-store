@@ -1,4 +1,4 @@
-import { Box, Card, CardActions, CardContent, Stack, TextField, Typography } from "@mui/material"
+import { Box, Card, CardActions, CardContent, Stack, TextField, Typography, ClickAwayListener } from "@mui/material"
 import type React from "react"
 import { useState } from "react"
 import type { Product } from "../../../types/types"
@@ -80,59 +80,61 @@ const Form = ({ product, closeForm, actionBtnText, onCreate, onUpdate }: FormPro
         zIndex: 1000,
       }}
     >
-      <Card
-        component="form"
-        sx={{
-          py: 2,
-          px: 10,
-          width: { xs: "auto", md: "50%" },
-          overflowY: "auto",
-          maxHeight: "100vh",
-        }}
-        onSubmit={onSubmit}
-      >
-        <CardContent>
-          <Stack
-            direction="column"
-            spacing={2}
-            sx={{
-              "& .MuiTextField-root": {
-                bgcolor: "#21212114",
-              },
-              "& .MuiOutlinedInput-notchedOutline": {
-                border: "none",
-              },
-            }}
-          >
-            {FORM_FIELDS.map((field) => (
-              <Stack key={field.name}>
-                <TextField
-                  name={field.name}
-                  label={field.label}
-                  type={field.type}
-                  value={formData[field.name as keyof ProductFormData]}
-                  onChange={field.name === "features" ? onFeatureChange : onChange}
-                  error={!!validationErrors[field.name]}
-                />
-                {validationErrors[field.name] && (
-                  <Typography color="error" variant="body2">
-                    {validationErrors[field.name]}
-                  </Typography>
-                )}
-              </Stack>
-            ))}
-          </Stack>
-        </CardContent>
+      <ClickAwayListener onClickAway={closeForm}>
+        <Card
+          component="form"
+          sx={{
+            py: 2,
+            px: 10,
+            width: { xs: "auto", md: "50%" },
+            overflowY: "auto",
+            maxHeight: "100vh",
+          }}
+          onSubmit={onSubmit}
+        >
+          <CardContent>
+            <Stack
+              direction="column"
+              spacing={2}
+              sx={{
+                "& .MuiTextField-root": {
+                  bgcolor: "#21212114",
+                },
+                "& .MuiOutlinedInput-notchedOutline": {
+                  border: "none",
+                },
+              }}
+            >
+              {FORM_FIELDS.map((field) => (
+                <Stack key={field.name}>
+                  <TextField
+                    name={field.name}
+                    label={field.label}
+                    type={field.type}
+                    value={formData[field.name as keyof ProductFormData]}
+                    onChange={field.name === "features" ? onFeatureChange : onChange}
+                    error={!!validationErrors[field.name]}
+                  />
+                  {validationErrors[field.name] && (
+                    <Typography color="error" variant="body2">
+                      {validationErrors[field.name]}
+                    </Typography>
+                  )}
+                </Stack>
+              ))}
+            </Stack>
+          </CardContent>
 
-        <CardActions sx={{ display: "flex", justifyContent: "center", gap: 2 }}>
-          <Button variant="outlined" onClick={closeForm} size="medium">
-            Cancel
-          </Button>
-          <Button variant="contained" type="submit" size="medium">
-            {actionBtnText}
-          </Button>
-        </CardActions>
-      </Card>
+          <CardActions sx={{ display: "flex", justifyContent: "center", gap: 2 }}>
+            <Button variant="outlined" onClick={closeForm} size="medium">
+              Cancel
+            </Button>
+            <Button variant="contained" type="submit" size="medium">
+              {actionBtnText}
+            </Button>
+          </CardActions>
+        </Card>
+      </ClickAwayListener>
     </Box>
   )
 }
