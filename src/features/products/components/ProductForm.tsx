@@ -5,6 +5,7 @@ import type { Product } from "../../../types/types"
 import { FORM_FIELDS } from "../../../constants/formFields"
 import Button from "../../../shared/components/Buttons/Button"
 import { productFormSchema, type ProductFormData } from "../../../schemas/productSchema"
+import styles from "./ProductForm.module.css"
 
 type FormProps = {
   product?: Product
@@ -38,7 +39,6 @@ const Form = ({ product, closeForm, actionBtnText, onCreate, onUpdate }: FormPro
     const result = productFormSchema.safeParse(formData)
 
     if (!result.success) {
-      console.error("Validation errors:", result.error.issues)
       const errors = Object.fromEntries(result.error.issues.map((issue) => [issue.path[0], issue.message]))
 
       setValidationErrors(errors)
@@ -69,44 +69,13 @@ const Form = ({ product, closeForm, actionBtnText, onCreate, onUpdate }: FormPro
   }
 
   return (
-    <Box
-      sx={{
-        position: "fixed",
-        inset: 0,
-        bgcolor: "rgba(0,0,0,0.6)",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        zIndex: 1000,
-      }}
-    >
+    <Box className={styles.wrapper}>
       <ClickAwayListener onClickAway={closeForm}>
-        <Card
-          component="form"
-          sx={{
-            py: 2,
-            px: 10,
-            width: { xs: "auto", md: "50%" },
-            overflowY: "auto",
-            maxHeight: "100vh",
-          }}
-          onSubmit={onSubmit}
-        >
+        <Card component="form" className={styles.form} onSubmit={onSubmit}>
           <CardContent>
-            <Stack
-              direction="column"
-              spacing={2}
-              sx={{
-                "& .MuiTextField-root": {
-                  bgcolor: "#21212114",
-                },
-                "& .MuiOutlinedInput-notchedOutline": {
-                  border: "none",
-                },
-              }}
-            >
+            <Stack direction="column" className={styles.inputStack}>
               {FORM_FIELDS.map((field) => (
-                <Stack key={field.name}>
+                <>
                   <TextField
                     name={field.name}
                     label={field.label}
@@ -120,12 +89,12 @@ const Form = ({ product, closeForm, actionBtnText, onCreate, onUpdate }: FormPro
                       {validationErrors[field.name]}
                     </Typography>
                   )}
-                </Stack>
+                </>
               ))}
             </Stack>
           </CardContent>
 
-          <CardActions sx={{ display: "flex", justifyContent: "center", gap: 2 }}>
+          <CardActions className={styles.action}>
             <Button variant="outlined" onClick={closeForm} size="medium">
               Cancel
             </Button>

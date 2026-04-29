@@ -1,0 +1,54 @@
+.card:global(.MuiCard-root) {
+  display: flex;
+  flex-direction: column;
+  overflow: visible;
+  width: 100%;
+  height: 100%;
+  padding-bottom: 16px;
+}
+
+.cardContent:global(.MuiCardContent-root) {
+  padding: 24px 24px 8px 24px;
+}
+
+.h6:global(.MuiTypography-h6) {
+  color: var(--mui-palette-primary-main);
+}
+
+
+.image:global(.MuiCardMedia-root) {
+  max-height: 194px;
+  max-width: 310px;
+  object-fit: contain;
+  align-self: center;
+}
+
+.cardContentDescription:global(.MuiCardContent-root) {
+  flex: 1;
+}
+
+.contextMenuBoxWrapper:global(.MuiBox-root) {
+  position: relative;
+  overflow: visible;
+}
+
+.contextMenuBox:global(.MuiBox-root) {
+  position: absolute;
+  z-index: 9999;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  top: -10px;
+}
+
+.contextMenuBoxInner:global(.MuiBox-root) {
+  max-width: 144px;
+  max-height: 160px;
+}
+
+.action:global(.MuiCardActions-root) {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  padding: 0 16px;
+}

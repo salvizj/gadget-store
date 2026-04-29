@@ -1,0 +1,10 @@
+.contextMenuWrapper:global(.MuiStack-root) {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-radius: 4px;
+  top: 21px;
+  left: 21px;
+  gap: 160px;
+}

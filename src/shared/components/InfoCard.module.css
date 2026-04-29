@@ -1,0 +1,41 @@
+.wrapper:global(.MuiCard-root) {
+  background-color: var(--mui-palette-secondary-main);
+  color: var(--mui-palette-secondary-contrastText);
+  display: flex;
+  width: 310px;
+  justify-content: center;
+  align-items: center;
+  flex: 1
+}
+
+.content:global(.MuiCardContent-root) {
+  padding-top: 32px;
+  padding-bottom: 64px;
+  padding-left: 32px;
+  padding-right: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px
+}
+
+.icon:global(.MuiBox-root) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title:global(.MuiTypography-root) {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.description:global(.MuiTypography-root) {
+  font-weight: 400;
+  font-size: 1.25rem;
+  line-height: 1;
+  letter-spacing: 0;
+  text-align: center;
+}

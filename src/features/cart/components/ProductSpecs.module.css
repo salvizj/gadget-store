@@ -1,0 +1,13 @@
+.wrapper:global(.MuiBox-root) {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 16px;
+}
+
+.wrapper>*:global(>.MuiTypography-root) {
+  white-space: nowrap;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.25;
+}

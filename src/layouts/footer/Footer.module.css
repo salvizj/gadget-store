@@ -1,0 +1,16 @@
+.wrapper:global(.MuiBox-root) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  color: var(--theme-primary-contrastText);
+  background-color: var(--theme-primary-main);
+}
+
+.text:global(.MuiTypography-root) {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-left: 64px;
+  letter-spacing: 0.5px;
+}

@@ -3,6 +3,7 @@ import AddIcon from "@mui/icons-material/Add"
 import RemoveIcon from "@mui/icons-material/Remove"
 import TrashIcon from "@mui/icons-material/Delete"
 import Button from "./Buttons/Button"
+import styles from "./QuantityControl.module.css"
 
 type QuantityControl = {
   productAlreadyInCart: boolean
@@ -20,14 +21,7 @@ const QuanitityControl = ({
   return (
     <>
       {productAlreadyInCart && (
-        <CardActions
-          sx={{
-            display: "flex",
-            flexDirection: "row",
-            gap: 2,
-            alignItems: "center",
-          }}
-        >
+        <CardActions className={styles.action}>
           <Button variant="outlined" onClick={onDecrementClick}>
             {productInCartCount === 1 ? <TrashIcon /> : <RemoveIcon />}
           </Button>

@@ -1,6 +1,7 @@
 import { Stack } from "@mui/material"
 import type { Product } from "../../../types/types"
 import MenuButton from "./MenuButton"
+import styles from "./ProductContextMenu.module.css"
 
 type ProductContextMenuProps = {
   product: Product
@@ -11,16 +12,7 @@ type ProductContextMenuProps = {
 
 const ProductContextMenu = ({ product, onDeleteClick, onEditClick, closeMenu }: ProductContextMenuProps) => {
   return (
-    <Stack
-      spacing={2}
-      sx={{
-        width: "100%",
-        height: "100%",
-        borderRadius: "4px",
-        top: "21px",
-        left: "21px",
-      }}
-    >
+    <Stack className={styles.contextMenuBoxWrapper}>
       <MenuButton
         onClick={() => {
           onEditClick(product)

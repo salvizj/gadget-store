@@ -1,0 +1,24 @@
+.wrapper:global(.MuiStack-root) {
+  display: flex;
+  flex-direction: row;
+}
+
+.wrapper:global(.MuiStack-root)>* {
+  white-space: nowrap;
+}
+
+@media (min-width: 768px) {
+  .wrapper:global(.MuiStack-root) {
+    flex-direction: row;
+    gap: 16px;
+    padding-bottom: 16px;
+  }
+}
+
+@media (max-width: 767px) {
+  .wrapper:global(.MuiStack-root) {
+    flex-direction: column;
+    gap: 8px;
+    padding-bottom: 8px;
+  }
+}

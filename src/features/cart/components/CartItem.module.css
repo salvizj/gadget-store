@@ -1,0 +1,46 @@
+.image:global(.MuiCardMedia-root) {
+  height: 267px;
+  width: 293px;
+  object-fit: contain;
+}
+
+.productInfoWrapper:global(.MuiBox-root) {
+  display: flex;
+  flex-direction: row;
+  gap: -20px;
+}
+
+.wrapper:global(.MuiCard-root) {
+  display: flex;
+  flex-direction: row;
+  padding-left: 48px;
+  padding-right: 48px;
+  justify-content: space-between;
+}
+
+.productDetailsWrapper:global(.MuiCardContent-root) {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1
+}
+
+.quantityAndPriceWrapper:global(.MuiBox-root) {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 80px;
+}
+
+.totalPriceWrapper:global(.MuiBox-root) {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex: 1;
+}
+
+.totalPrice:global(.MuiTypography-root) {
+  white-space: nowrap;
+  color: var(--mui-text-secondary);
+}

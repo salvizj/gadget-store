@@ -5,6 +5,7 @@ import { useState } from "react"
 import type { Product } from "../../../types/types"
 import ProductContextMenu from "./ProductContextMenu"
 import Button from "../../../shared/components/Buttons/Button"
+import styles from "./ProductCard.module.css"
 
 type ProductCardProps = {
   product: Product
@@ -13,21 +14,11 @@ type ProductCardProps = {
 }
 const ProductCard = ({ product, onEditClick, onDeleteClick }: ProductCardProps) => {
   const [menuOpen, setMenuOpen] = useState(false)
-
   return (
     <>
-      <Card
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          overflow: "visible",
-          width: "100%",
-          height: "100%",
-          pb: 4,
-        }}
-      >
-        <CardContent sx={{ px: 3, pt: 2, pb: 1 }}>
-          <Typography variant="h6" sx={{ color: "primary.main" }}>
+      <Card className={styles.card}>
+        <CardContent className={styles.cardContent}>
+          <Typography variant="h6" component="h6">
             {product.title}
           </Typography>
           <Typography variant="subtitle2">Price: {product.price}&euro;</Typography>
@@ -37,48 +28,26 @@ const ProductCard = ({ product, onEditClick, onDeleteClick }: ProductCardProps) 
           component="img"
           image={ProductImgPathFromTitle(product.title)}
           alt={product.title}
-          sx={{
-            maxHeight: "194px",
-            maxWidth: "310px",
-            objectFit: "contain",
-            alignSelf: "center",
-          }}
+          className={styles.image}
         />
-        <CardContent sx={{ flex: 1 }}>
+        <CardContent className={styles.cardContentDescription}>
           <Typography variant="body2">{product.short_description}</Typography>
         </CardContent>
 
-        <CardActions
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            gap: 2,
-            px: 2,
-            m: 0,
-          }}
-        >
+        <CardActions className={styles.action}>
           <Button variant="outlined" size="small" component={Link} to={`/products/${product.id}`}>
             Details
           </Button>
 
-          <Box sx={{ position: "relative" }}>
+          <Box className={styles.contextMenuBoxWrapper}>
             <Button variant="outlined" size="small" onClick={() => setMenuOpen(true)}>
               Menu
             </Button>
 
             {menuOpen && (
               <ClickAwayListener onClickAway={() => setMenuOpen(false)}>
-                <Box
-                  sx={{
-                    position: "absolute",
-                    zIndex: 20,
-                    p: 2,
-                    bgcolor: "#ffffff",
-                    boxShadow: 2,
-                    top: -10,
-                  }}
-                >
-                  <Box sx={{ maxWidth: "144px", maxHeight: "160px" }}>
+                <Box className={styles.contextMenuBox}>
+                  <Box className={styles.contextMenuBoxInner}>
                     <ProductContextMenu
                       product={product}
                       onEditClick={() => onEditClick(product)}

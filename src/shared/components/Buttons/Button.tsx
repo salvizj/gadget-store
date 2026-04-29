@@ -10,6 +10,7 @@ type ButtonProps = {
   component?: React.ElementType
   to?: string
   type?: "button" | "submit"
+  className?: string
 }
 
 const Button = ({
@@ -20,6 +21,7 @@ const Button = ({
   component,
   to,
   type = "button",
+  className,
 }: ButtonProps) => {
   return (
     <MuiButton
@@ -27,6 +29,7 @@ const Button = ({
       sx={[SIZE_STYLES[size], VARIANT_STYLES[variant][size]]}
       variant={variant}
       type={type}
+      className={className}
       {...(component && { component })}
       {...(to && { to })}
     >

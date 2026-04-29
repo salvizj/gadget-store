@@ -1,0 +1,30 @@
+.wrapper {
+  display: flex;
+  align-items: start;
+
+}
+
+.innerWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  padding-bottom: 16px;
+  padding-top: 10px;
+  margin-left: 22px;
+  margin-right: 22px;
+}
+
+.linkText:global(.MuiTypography-h4) {
+  text-decoration: underline;
+  text-transform: capitalize;
+  text-underline-offset: 2px;
+}
+
+
+.content:global(.MuiStack-root) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}

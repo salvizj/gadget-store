@@ -1,4 +1,5 @@
 import { Box, Typography } from "@mui/material"
+import styles from "./Footer.module.css"
 
 type FooterProps = {
   text: string
@@ -7,8 +8,8 @@ type FooterProps = {
 const Footer = ({ text }: FooterProps) => {
   return (
     <>
-      <Box component="footer" sx={{ bgcolor: "primary.main", color: "primary.contrastText", py: 3.2 }}>
-        <Typography color="inherit" sx={{ fontSize: "1.3rem", fontWeight: 600, ml: 8, letterSpacing: 0.5 }}>
+      <Box component="footer" className={styles.wrapper}>
+        <Typography color="inherit" className={styles.text}>
           {text}
         </Typography>
       </Box>

@@ -17,6 +17,7 @@ declare module "@mui/material/Typography" {
 declare module "@mui/material/styles" {}
 
 const theme = createTheme({
+  cssVariables: true,
   palette: {
     primary: {
       main: "#3F51B5",
@@ -92,6 +93,13 @@ const theme = createTheme({
       fontSize: "0.875rem",
       fontWeight: 500,
       lineHeight: 1.57,
+    },
+  },
+  components: {
+    MuiButtonBase: {
+      defaultProps: {
+        disableRipple: true,
+      },
     },
   },
 })

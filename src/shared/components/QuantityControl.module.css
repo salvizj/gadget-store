@@ -1,0 +1,6 @@
+.action:global(.MuiCardActions-root) {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  align-items: center;
+}

@@ -1,9 +1,9 @@
 import { Typography, Stack } from "@mui/material"
 import type { Product } from "../../../types/types"
-
+import styles from "./ProductSpecs.module.css"
 const ProductSpecs = ({ product }: { product: Product }) => {
   return (
-    <Stack direction={{ xs: "column", md: "row" }} spacing={{ xs: 2, md: 4 }} sx={{ pb: { xs: 2, md: 4 } }}>
+    <Stack className={styles.wrapper}>
       <Typography variant="h5" noWrap={true}>
         Year: {product.year}
       </Typography>
@@ -11,7 +11,7 @@ const ProductSpecs = ({ product }: { product: Product }) => {
         RAM Memory: {product.RAM}
       </Typography>
       <Typography variant="h5" noWrap={true}>
-        Warrenty: {product.warranty_period}
+        Warranty: {product.warranty_period}
       </Typography>
     </Stack>
   )

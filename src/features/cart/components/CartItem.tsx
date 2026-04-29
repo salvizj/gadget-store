@@ -1,10 +1,11 @@
-import { Card, CardContent, CardMedia, Stack, Typography } from "@mui/material"
+import { Box, Card, CardContent, CardMedia, Typography } from "@mui/material"
 import { ProductImgPathFromTitle } from "../../../utils/productUtils"
 import type { CartItem, Product } from "../../../types/types"
 import QuantityToggler from "../../../shared/components/QuantityControl"
 import { useDispatch } from "react-redux"
 import { decrementQuantity, incrementQuantity } from "../cartSlice"
-import Specs from "./Specs"
+import ProductSpecs from "./ProductSpecs"
+import styles from "./CartItem.module.css"
 
 type CartItemProps = {
   product: Product
@@ -16,42 +17,25 @@ const CartItem = ({ product, quantity }: CartItemProps) => {
 
   return (
     <>
-      <Card
-        sx={{
-          display: "flex",
-          flexDirection: "row",
-          px: 6,
-        }}
-      >
-        <Stack direction="row" sx={{ flex: 1 }} spacing={-1}>
+      <Card className={styles.wrapper}>
+        <Box className={styles.productInfoWrapper}>
           <CardMedia
             component="img"
-            sx={{
-              height: "267px",
-              width: "293px",
-              objectFit: "contain",
-            }}
             image={ProductImgPathFromTitle(product.title)}
             alt={product.title}
+            className={styles.image}
           />
 
-          <CardContent
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              flex: 1,
-              gap: 2,
-            }}
-          >
+          <CardContent className={styles.productDetailsWrapper}>
             <Typography variant="h4" gutterBottom>
               {product.title}
             </Typography>
 
-            <Specs product={product} />
+            <ProductSpecs product={product} />
           </CardContent>
-        </Stack>
+        </Box>
 
-        <Stack direction="row" spacing={20}>
+        <Box className={styles.quantityAndPriceWrapper}>
           <QuantityToggler
             productAlreadyInCart={true}
             productInCartCount={quantity}
@@ -59,18 +43,12 @@ const CartItem = ({ product, quantity }: CartItemProps) => {
             onDecrementClick={() => dispatch(decrementQuantity({ productId: product.id }))}
           />
 
-          <CardContent
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              flex: 1,
-            }}
-          >
-            <Typography variant="h5" color="text.secondary" sx={{ whiteSpace: "nowrap" }}>
+          <CardContent className={styles.totalPriceWrapper}>
+            <Typography variant="h5" color="text.secondary" className={styles.totalPrice}>
               Total: ${(product.price * quantity).toFixed(2)}
             </Typography>
           </CardContent>
-        </Stack>
+        </Box>
       </Card>
     </>
   )
