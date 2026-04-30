@@ -1,0 +1,36 @@
+.sectionWrapper:global(.MuiBox-root) {
+  padding-top: 64px;
+  padding-bottom: 64px;
+  max-width: 1000px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contentWrapper:global(.MuiBox-root) {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+.title:global(.MuiTypography-root) {
+  text-align: center;
+}
+
+.cardsWrapper:global(.MuiBox-root) {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .cardsWrapper:global(.MuiBox-root) {
+    flex-direction: row;
+    align-items: stretch;
+  }
+}

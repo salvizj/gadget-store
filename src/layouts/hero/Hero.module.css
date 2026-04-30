@@ -1,0 +1,86 @@
+.wrapper:global(.MuiBox-root) {
+
+  background-color: var(--mui-palette-secondary-main);
+  color: var(--mui-palette-secondary-contrastText);
+  display: flex;
+  justify-content: center;
+}
+
+.innerWrapper:global(.MuiBox-root) {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  width: 90%;
+
+
+  @media (min-width: 1200px) {
+    flex-direction: row;
+    padding: 0;
+    gap: 32px;
+  }
+
+  @media (max-width: 599px) {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    gap: 0;
+  }
+
+  .contentWrapper:global(.MuiBox-root) {
+    display: flex;
+    justify-content: center;
+    max-width: 560px;
+    flex-direction: column;
+    gap: 32px;
+
+    @media (min-width: 1200px) {
+      align-items: flex-start;
+    }
+
+    @media (max-width: 599px) {
+      align-items: center;
+    }
+  }
+
+  .textWrapper:global(.MuiBox-root) {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+  }
+
+  .textWrapper second-child:global(.MuiBox-root) {
+    font-size: 1.25rem;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 1.3
+  }
+
+  .actionWrapper:global(.MuiBox-root) {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+    text-transform: uppercase;
+    justify-content: flex-start;
+    align-items: center;
+  }
+}
+
+
+.imageWrapper:global(.MuiBox-root) {
+  @media (min-width: 1200px) {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex: 1;
+  }
+
+  @media (max-width: 1199px) {
+    display: none;
+  }
+}
+
+
+.image:global(.MuiBox-root) {
+  width: 600px;
+  height: 700px;
+}

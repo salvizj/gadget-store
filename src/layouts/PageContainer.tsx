@@ -1,16 +1,11 @@
-import { Container } from "@mui/material"
-import type { ContainerProps } from "@mui/material"
+import { Box, type BoxProps } from "@mui/material"
+import styles from "./PageCountainer.module.css"
 
-const PageContainer = ({ children, sx, ...props }: ContainerProps) => {
+const PageContainer = ({ children, className, ...props }: BoxProps) => {
   return (
-    <Container
-      component="section"
-      maxWidth={false}
-      sx={[{ maxWidth: "94vw", width: "100%" }, ...(Array.isArray(sx) ? sx : [sx])]}
-      {...props}
-    >
+    <Box component="section" maxWidth={false} {...props} className={`${styles.wrapper} ${className || ""}`}>
       {children}
-    </Container>
+    </Box>
   )
 }
 

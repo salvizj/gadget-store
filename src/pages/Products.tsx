@@ -1,4 +1,4 @@
-import { Typography, Grid, Stack, Box } from "@mui/material"
+import { Typography, Grid, Box } from "@mui/material"
 import ProductCard from "../features/products/components/ProductCard"
 import useProducts from "../features/products/hooks/useProducts"
 import { useState } from "react"
@@ -10,6 +10,7 @@ import type { Product } from "../types/types"
 import AddIcon from "@mui/icons-material/Add"
 import PageContainer from "../layouts/PageContainer"
 import Button from "../shared/components/Buttons/Button"
+import styles from "./Products.module.css"
 
 const Products = () => {
   const [isCreateFormOpen, setIsCreateFormOpen] = useState(false)
@@ -29,54 +30,27 @@ const Products = () => {
 
   if (productsLoading || createLoading || updateLoading || deleteLoading) {
     return (
-      <>
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            height: "100vh",
-          }}
-        >
-          <Typography variant="h2">Loading...</Typography>
-        </Box>
-      </>
+      <Box className={styles.stateWrapper}>
+        <Typography variant="h2">Loading...</Typography>
+      </Box>
     )
   }
 
   if (productsError || createError || updateError || deleteError) {
     return (
-      <>
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            height: "100vh",
-          }}
-        >
-          <Typography variant="h2">
-            Error: {productsError} {createError} {updateError} {deleteError}
-          </Typography>
-        </Box>
-      </>
+      <Box className={styles.stateWrapper}>
+        <Typography variant="h2">
+          Error: {productsError} {createError} {updateError} {deleteError}
+        </Typography>
+      </Box>
     )
   }
 
   if (!products.length) {
     return (
-      <>
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            height: "100vh",
-          }}
-        >
-          <Typography variant="h2">Product not found</Typography>
-        </Box>
-      </>
+      <Box className={styles.stateWrapper}>
+        <Typography variant="h2">Product not found</Typography>
+      </Box>
     )
   }
 
@@ -94,25 +68,21 @@ const Products = () => {
         />
       )}
 
-      <PageContainer sx={{ py: 10 }}>
-        <Stack spacing={8} direction="column">
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: { xs: "center", md: "end" },
-              alignItems: "center",
-            }}
-          >
+      <PageContainer className={styles.pageWrapper}>
+        <Box className={styles.contentWrapper}>
+          <Box className={styles.actionBar}>
             <Button variant="contained" size="large" onClick={() => setIsCreateFormOpen(true)}>
-              <Stack direction="row" spacing={1} sx={{ alignItems: "center", justifyContent: "center" }}>
-                <AddIcon /> <Typography>Add new product</Typography>
-              </Stack>
+              <Box className={styles.addButtonContent}>
+                <AddIcon />
+                <Typography>Add new product</Typography>
+              </Box>
             </Button>
           </Box>
-          <Grid container spacing={2}>
+
+          <Grid container spacing={2} className={styles.productsGrid}>
             {products.map((product) => (
               <Grid size={{ xs: 12, sm: 6, md: 3, xl: 3 }} key={product.id}>
-                <Box sx={{ height: "405px" }}>
+                <Box className={styles.productCardWrapper}>
                   <ProductCard
                     product={product}
                     onDeleteClick={async () => await deleteProduct(product.id as unknown as string)}
@@ -122,7 +92,7 @@ const Products = () => {
               </Grid>
             ))}
           </Grid>
-        </Stack>
+        </Box>
       </PageContainer>
     </>
   )

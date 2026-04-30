@@ -1,0 +1,111 @@
+.pageWrapper:global(.MuiBox-root) {
+  margin-top: 64px;
+  margin-bottom: 112px;
+}
+
+.productCard:global(.MuiCard-root) {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px 16px;
+}
+
+.productImage:global(.MuiCardMedia-root) {
+  max-width: 100%;
+  width: 40%;
+  max-height: 550px;
+  object-fit: contain;
+  align-self: flex-start;
+}
+
+.productContent:global(.MuiCardContent-root) {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  padding: 0;
+}
+
+.detailsWrapper:global(.MuiBox-root) {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.productDescription:global(.MuiTypography-root) {
+  color: var(--mui-palette-text-secondary);
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.875;
+  letter-spacing: 0.25px;
+  max-width: 100%;
+}
+
+.price:global(.MuiTypography-root) {
+  padding: 32px 0;
+}
+
+.actionsContainer:global(.MuiBox-root) {
+  position: relative;
+}
+
+.actions:global(.MuiCardActions-root) {
+  display: flex;
+  gap: 16px;
+  padding: 0;
+  min-height: 48px;
+  height: 48px;
+}
+
+.contextMenu:global(.MuiBox-root) {
+  position: absolute;
+  z-index: 20;
+  padding: 16px;
+  background-color: #ffffff;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+  top: 0;
+}
+
+@media (min-width: 600px) {
+  .productCard:global(.MuiCard-root) {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  .productContent:global(.MuiCardContent-root) {
+    padding: 16px;
+  }
+}
+
+@media (min-width: 900px) {
+  .productCard:global(.MuiCard-root) {
+    padding-left: 48px;
+    padding-right: 48px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    flex-direction: row-reverse;
+    gap: 0;
+  }
+
+  .productImage:global(.MuiCardMedia-root) {
+    max-width: 550px;
+  }
+
+  .productDescription:global(.MuiTypography-root) {
+    max-width: 80%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .productCard:global(.MuiCard-root) {
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .productContent:global(.MuiCardContent-root) {
+    width: 50%;
+  }
+}

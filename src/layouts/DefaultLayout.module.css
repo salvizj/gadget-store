@@ -1,0 +1,9 @@
+.wrapper:global(.MuiBox-root) {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main:global(.MuiBox-root) {
+  flex-grow: 1;
+}

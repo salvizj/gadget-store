@@ -1,0 +1,53 @@
+.pageWrapper:global(.MuiBox-root) {
+  padding-top: 112px;
+  padding-bottom: 112px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contentWrapper:global(.MuiBox-root) {
+  display: flex;
+  flex-direction: column;
+  gap: 112px;
+}
+
+.infoWrapper:global(.MuiBox-root) {
+  max-width: 750px;
+}
+
+.infoContentWrapper:global(.MuiBox-root) {
+  display: flex;
+  flex-direction: column;
+  gap: 96px;
+}
+
+.addressWrapper:global(.MuiBox-root) {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.mapWrapper:global(.MuiBox-root) {
+  height: 320px;
+}
+
+.cardsWrapper:global(.MuiBox-root) {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 900px) {
+  .contentWrapper:global(.MuiBox-root) {
+    flex-direction: row;
+  }
+
+  .cardsWrapper:global(.MuiBox-root) {
+    align-items: stretch;
+  }
+}

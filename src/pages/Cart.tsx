@@ -1,8 +1,9 @@
-import { Stack, Typography } from "@mui/material"
+import { Box, Typography } from "@mui/material"
 import { useSelector } from "react-redux"
 import type { RootState } from "../store/store"
 import PageContainer from "../layouts/PageContainer"
 import EmptyCartCard from "../features/cart/components/EmptyCart"
+import styles from "./Cart.module.css"
 import CartItem from "../features/cart/components/CartItem"
 
 const Cart = () => {
@@ -16,11 +17,7 @@ const Cart = () => {
 
   if (itemCount === 0) {
     return (
-      <PageContainer
-        sx={{
-          py: 14,
-        }}
-      >
+      <PageContainer className={styles.emptyPageWrapper}>
         <EmptyCartCard />
       </PageContainer>
     )
@@ -28,8 +25,8 @@ const Cart = () => {
 
   return (
     <>
-      <PageContainer sx={{ pt: 4, pb: 36 }}>
-        <Stack direction="row" sx={{ justifyContent: "space-between", alignItems: "center", py: 10 }}>
+      <PageContainer className={styles.pageWrapper}>
+        <Box className={styles.headerWrapper}>
           <Typography variant="h4" gutterBottom>
             Shopping Cart
           </Typography>
@@ -38,13 +35,13 @@ const Cart = () => {
               Total: ${totalSum}
             </Typography>
           )}
-        </Stack>
+        </Box>
 
-        <Stack direction="column" sx={{ gap: 6 }}>
+        <Box className={styles.cartItemsWrapper}>
           {itemsInCart.map((item) => (
             <CartItem key={item.product.id} product={item.product} quantity={item.quantity} />
           ))}
-        </Stack>
+        </Box>
       </PageContainer>
     </>
   )

@@ -1,0 +1,49 @@
+.stateWrapper:global(.MuiBox-root) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.pageWrapper:global(.MuiBox-root) {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+.contentWrapper:global(.MuiBox-root) {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  width: 100%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.actionBar:global(.MuiBox-root) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.addButtonContent:global(.MuiBox-root) {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+}
+
+.productsGrid:global(.MuiGrid2-container) {
+  justify-content: center;
+}
+
+.productCardWrapper:global(.MuiBox-root) {
+  height: 405px;
+}
+
+@media (min-width: 900px) {
+  .actionBar:global(.MuiBox-root) {
+    justify-content: flex-end;
+  }
+}

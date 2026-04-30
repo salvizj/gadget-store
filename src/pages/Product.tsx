@@ -1,4 +1,4 @@
-import { Typography, Stack, Card, CardMedia, CardActions, CardContent, Box, ClickAwayListener } from "@mui/material"
+import { Typography, Card, CardMedia, CardActions, CardContent, Box, ClickAwayListener } from "@mui/material"
 import { useParams } from "react-router"
 import FeatureList from "../features/products/components/ProductFeatureList"
 import { ProductImgPathFromTitle } from "../utils/productUtils"
@@ -15,6 +15,7 @@ import QuantityControl from "../shared/components/QuantityControl"
 import ProductContextMenu from "../features/products/components/ProductContextMenu"
 import Button from "../shared/components/Buttons/Button"
 import useCartProduct from "../features/cart/hooks/useCartProduct"
+import styles from "./Product.module.css"
 
 const Product = () => {
   const { id } = useParams()
@@ -54,74 +55,34 @@ const Product = () => {
       )}
       {isAddedToCartCardOpen && <AddedToCartCard closeWindow={() => setIsAddedToCartCardOpen(false)} />}
 
-      <PageContainer sx={{ mb: 14, mt: 8 }}>
-        <Card
-          elevation={1}
-          sx={{
-            px: { xs: 2, sm: 4, md: 6, lg: 10 },
-            py: { xs: 3, md: 5 },
-            display: "flex",
-            flexDirection: { xs: "column", md: "row-reverse" },
-            gap: { xs: 3, md: 0 },
-          }}
-        >
+      <PageContainer className={styles.pageWrapper}>
+        <Card elevation={1} className={styles.productCard}>
           <CardMedia
             component="img"
-            sx={{
-              maxWidth: { xs: "100%", md: "550px" },
-              width: "40%",
-              maxHeight: "550px",
-              objectFit: "contain",
-              alignSelf: "top",
-            }}
+            className={styles.productImage}
             image={ProductImgPathFromTitle(product.title)}
             alt={product.title}
           />
 
-          <CardContent
-            sx={{
-              display: "flex",
-              flex: 1,
-              flexDirection: "column",
-              alignItems: "start",
-              width: { xs: "100%", xl: "50%" },
-              p: { xs: 0, sm: 2 },
-            }}
-          >
-            <Stack direction="column" spacing={5}>
+          <CardContent className={styles.productContent}>
+            <Box className={styles.detailsWrapper}>
               <Typography variant="h4" gutterBottom>
                 {product.title}
               </Typography>
-              <Typography
-                gutterBottom
-                sx={{
-                  color: "secondary.text",
-                  fontWeight: 400,
-                  fontSize: "1rem",
-                  lineHeight: 1.875,
-                  letterSpacing: "0.25px",
-                  maxWidth: { xs: "100%", md: "80%" },
-                }}
-              >
+              <Typography gutterBottom className={styles.productDescription}>
                 {product.long_description}
               </Typography>
               <ProductSpecs product={product} />
-            </Stack>
+            </Box>
+
             <FeatureList features={product.features ?? []} />
-            <Typography variant="h5" gutterBottom sx={{ py: 4 }}>
+
+            <Typography variant="h5" gutterBottom className={styles.price}>
               Price: {product.price}€
             </Typography>
 
-            <Box sx={{ position: "relative" }}>
-              <CardActions
-                sx={{
-                  display: "flex",
-                  gap: 2,
-                  p: 0,
-                  minHeight: "48px",
-                  height: "48px",
-                }}
-              >
+            <Box className={styles.actionsContainer}>
+              <CardActions className={styles.actions}>
                 <Button variant="outlined" size="medium" onClick={() => setMenuOpen(true)}>
                   Menu
                 </Button>
@@ -149,16 +110,7 @@ const Product = () => {
 
               {menuOpen && (
                 <ClickAwayListener onClickAway={() => setMenuOpen(false)}>
-                  <Box
-                    sx={{
-                      position: "absolute",
-                      zIndex: 20,
-                      p: 2,
-                      bgcolor: "#ffffff",
-                      boxShadow: 2,
-                      top: 0,
-                    }}
-                  >
+                  <Box className={styles.contextMenu}>
                     <ProductContextMenu
                       product={product}
                       onEditClick={() => setIsUpdateFormOpen(true)}

@@ -1,6 +1,6 @@
 import { Box, Card, CardContent, CardMedia, Typography } from "@mui/material"
 import { ProductImgPathFromTitle } from "../../../utils/productUtils"
-import type { CartItem, Product } from "../../../types/types"
+import type { Product } from "../../../types/types"
 import QuantityToggler from "../../../shared/components/QuantityControl"
 import { useDispatch } from "react-redux"
 import { decrementQuantity, incrementQuantity } from "../cartSlice"
@@ -44,7 +44,7 @@ const CartItem = ({ product, quantity }: CartItemProps) => {
           />
 
           <CardContent className={styles.totalPriceWrapper}>
-            <Typography variant="h5" color="text.secondary" className={styles.totalPrice}>
+            <Typography variant="h5" className={styles.totalPrice}>
               Total: ${(product.price * quantity).toFixed(2)}
             </Typography>
           </CardContent>

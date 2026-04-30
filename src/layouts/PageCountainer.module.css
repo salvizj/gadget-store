@@ -1,0 +1,5 @@
+.wrapper:global(.MuiBox-root) {
+  max-width: 94vw;
+  width: 100%;
+
+}

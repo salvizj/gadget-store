@@ -4,8 +4,8 @@
   align-items: center;
   padding-top: 24px;
   padding-bottom: 24px;
-  color: var(--theme-primary-contrastText);
-  background-color: var(--theme-primary-main);
+  color: var(--mui-palette-primary-contrastText);
+  background-color: var(--mui-palette-primary-main);
 }
 
 .text:global(.MuiTypography-root) {

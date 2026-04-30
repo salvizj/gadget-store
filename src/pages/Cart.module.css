@@ -1,0 +1,25 @@
+.emptyPageWrapper:global(.MuiBox-root) {
+  padding-top: 112px;
+  padding-bottom: 112px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pageWrapper:global(.MuiBox-root) {
+  padding-top: 32px;
+  padding-bottom: 288px;
+}
+
+.headerWrapper:global(.MuiBox-root) {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+.cartItemsWrapper:global(.MuiBox-root) {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
